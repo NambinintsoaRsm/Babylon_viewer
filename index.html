@@ -2,30 +2,78 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <title>Babylon Viewer - Début</title>
+    <title>Babylon Viewer</title>
     <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
+        html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+        #renderCanvas { width: 100%; height: 100%; touch-action: none; display: block; }
+
+        #ui {
+            position: absolute;
+            top: 10px; left: 10px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            z-index: 10;
+            min-width: 260px;
         }
-        #renderCanvas {
-            width: 100%;
-            height: 100%;
-            touch-action: none;
-        }
+        #ui label { display: block; margin-bottom: 6px; }
+        #ui .ligne { margin: 10px 0; }
+        #ui button { margin-right: 6px; }
     </style>
 </head>
 <body>
-
 <canvas id="renderCanvas"></canvas>
 
-<!-- Babylon.js -->
+<div id="ui">
+
+
+    <div class="ligne">
+        <label>
+            Mode contrôle :
+            <select id="modeControle">
+                <option value="souris">Souris / Trackpad </option>
+                <option value="clavier">Clavier uniquement</option>
+            </select>
+        </label>
+    </div>
+
+
+
+    <div class="ligne">
+        <button id="resetBtn">Revenir au départ</button>
+    </div>
+    <div class="ligne">
+        <label>
+            Regarder :
+            <select id="cibleRegard">
+                <option value="proche">Objet le plus proche</option>
+                <option value="objetA">Objet A</option>
+                <option value="objetB">Objet B</option>
+                <option value="objetC">Objet C</option>
+            </select>
+        </label>
+        <button id="regarderBtn">Tourner vers</button>
+    </div>
+
+    <div class="ligne">
+        <label>
+            <input id="autoRegard" type="checkbox" checked>
+            Auto-orienter si proche
+        </label>
+
+    </div>
+
+</div>
+
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 
-<!-- Source code -->
-<script src="main.js"></script>
-
+<!-- Ton code (ordre important) -->
+<script src="js/scene.js"></script>
+<script src="js/logique.js"></script>
+<script src="js/cameras.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
